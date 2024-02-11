@@ -59,6 +59,49 @@ deactivate
 
 This will deactivate the virtual environment and restore your Python environment to its default state.
 
+
+## Issues that might come
+
+<img width="532" alt="image" src="https://github.com/SaadARazzaq/venvpy/assets/123338307/be90c3b6-2b77-40aa-9a4c-05f7f9f49587">
+
+ If this issue comes then this means that you're encountering an issue with PowerShell's execution policy, which is preventing the activation script from running. PowerShell's execution policy is a security feature that controls the conditions under which PowerShell loads configuration files and runs scripts.
+
+To resolve this issue, you can temporarily change the execution policy for the current PowerShell session to allow script execution. Here's how you can do it:
+
+- Open PowerShell as an administrator. Right-click on the PowerShell icon and select "Run as administrator".
+- Run the following command to temporarily set the execution policy to allow script execution:
+
+```bash
+Set-ExecutionPolicy RemoteSigned -Scope Process
+```
+
+- After changing the execution policy, try activating the virtual environment again using the activation script:
+
+```bash
+.\myenv\Scripts\Activate
+```
+
+This should allow you to activate the virtual environment without encountering the security error. Once you've finished working in the virtual environment, you can close the PowerShell session, and the temporary execution policy change will revert to the previous state.
+
+To permanently set the execution policy for PowerShell, you'll need to run the Set-ExecutionPolicy command with appropriate parameters. Here's how you can do it:
+
+- Open PowerShell as an administrator. Right-click on the PowerShell icon and select "Run as administrator".
+- Run the following command to permanently set the execution policy to RemoteSigned for the current user:
+
+```bash
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+This command sets the execution policy to RemoteSigned for the current user only. It allows scripts that are downloaded from the internet to run if they are signed by a trusted publisher.
+
+If you want to set the execution policy for all users on the computer, you can use the AllSigned policy, which requires all scripts to be signed by a trusted publisher. However, this may be more restrictive:
+
+```bash
+Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
+
+**Be cautious when setting the execution policy, especially to a less restrictive one like RemoteSigned, as it can pose security risks if you run untrusted scripts. Always ensure that you only execute scripts from trusted sources.**
+
 ---
 
 Now you know how to create a virtual environment in Python on different operating systems and why it's important. Virtual environments are essential for managing dependencies, ensuring project isolation, and maintaining reproducibility in your Python projects. 😊
