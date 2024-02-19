@@ -83,7 +83,7 @@ Set-ExecutionPolicy RemoteSigned -Scope Process
 
 This should allow you to activate the virtual environment without encountering the security error. Once you've finished working in the virtual environment, you can close the PowerShell session, and the temporary execution policy change will revert to the previous state.
 
-To permanently set the execution policy for PowerShell, you'll need to run the Set-ExecutionPolicy command with appropriate parameters. Here's how you can do it:
+To `permanently` set the execution policy for PowerShell, you'll need to run the Set-ExecutionPolicy command with appropriate parameters. Here's how you can do it:
 
 - Open PowerShell as an administrator. Right-click on the PowerShell icon and select "Run as administrator".
 - Run the following command to permanently set the execution policy to RemoteSigned for the current user:
